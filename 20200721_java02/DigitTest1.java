@@ -1,4 +1,4 @@
-package com.ssafy.algo;
+package com.ssafy;
 import java.util.Scanner;
 
 public class DigitTest1 {
