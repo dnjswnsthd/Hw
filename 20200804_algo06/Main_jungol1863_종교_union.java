@@ -1,50 +1,63 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+import java.util.StringTokenizer;
+ 
 public class Main_jungol1863_종교_union {
-	static int[] parent;
-	static int[] rank;
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] str = br.readLine().split(" ");
-		int n = Integer.parseInt(str[0]);
-		int m = Integer.parseInt(str[1]);
-		parent = new int[n + 1];
-		rank = new int[n + 1];
-
-		for (int i = 0; i < m; i++) {
-			String[] str_ = br.readLine().split(" ");
-			int x = Integer.parseInt(str_[0]);
-			int y = Integer.parseInt(str_[1]);
-			union(x, y);
-		}
-		int cnt = 0;
-		for (int i = 0; i <= n; i++) {
-			if (i == parent[i]) {
-				cnt++;
-			}
-		}
-		System.out.println(cnt);
-		br.close();
-	}
-	public static int find(int x) {
-		if (x == parent[x]) {
-			return x;
-		}
-		parent[x] = find(parent[x]);
-		return parent[x];
-	}
-	public static void union(int x, int y) {
-		int dx = find(x);
-		int dy = find(y);
-		if (rank[dx] < rank[dy]) {
-			parent[dx] = dy;
-		} else {
-			parent[dy] = dx;
-			if (rank[dx] == rank[dy]) {
-				rank[dx]++;
-			}
-		}
-	}
+    static int [] parents;
+    static int [] rank;
+ 
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+        StringTokenizer st = new StringTokenizer(str);
+        int n = Integer.parseInt(st.nextToken()); 
+        int m = Integer.parseInt(st.nextToken()); 
+        
+        parents = new int[n+1];
+        rank = new int[n+1];
+        
+        for(int i = 1; i<=n; i++) {
+            parents[i] = i;
+        }
+        
+        for(int i = 0; i<m; i++) {
+            str = br.readLine();
+            st = new StringTokenizer(str);
+            int a = Integer.parseInt(st.nextToken()); 
+            int b = Integer.parseInt(st.nextToken()); 
+            union(a,b);
+        }
+        
+        int cnt = 0;
+        for(int i = 1; i<=n; i++) {
+            if(i == parents[i]) {
+                cnt++;
+            }
+        }
+        System.out.println(cnt);
+    }
+    
+    public static int find(int x) {
+        if(x == parents[x]) {
+            return x;
+        }
+        parents[x] = find(parents[x]);
+        return parents[x];
+    }
+    
+    public static void union(int x, int y) {
+        int px = find(x);
+        int py = find(y);
+        if(rank[px]<rank[py]) {
+            parents[px] = py;  
+        }
+        else {
+            parents[py] = px;
+            if(rank[px] == rank[py]) {
+                rank[px]++;
+            }
+        }
+    }
+ 
 }
