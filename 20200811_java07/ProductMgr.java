@@ -9,7 +9,7 @@ interface ProductMgr {
 	public void findSerial(String s);
 	public void findTV();
 	public void findRefrigerator();	
-	public void fingBigRefrigerator();
+	public void findBigRefrigerator();
 	public void findBigTV();
 	public void modifyPrice(String s, int price) ;
 	public void deleteWithSerial(String s);
