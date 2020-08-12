@@ -38,7 +38,7 @@ class Product {
 	}
 	@Override
 	public String toString() {
-		return String.format("%-10s | %-15s | %-10d | %5d",
+		return String.format("%-10s | %-15s | %-15d | %8d",
 				this.getSerial(), this.getName(),
 				this.getPrice(), this.getCount());
 	}
