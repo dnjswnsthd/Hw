@@ -1,20 +1,20 @@
 package com.ssafy.java.day07.hw;
 
 class TV extends Product {
-	private double inch;
+	private int inch;
 	private String displayType;
 	
 	public TV(String serial, String name, int price, int count,
-			double inch, String displayType) {
+			int inch, String displayType) {
 		super(serial, name, price, count);
 		// TODO Auto-generated constructor stub
 		this.inch = inch;
 		this.displayType=displayType;
 	}
-	public double getInch() {
+	public int getInch() {
 		return inch;
 	}
-	public void setInch(double inch) {
+	public void setInch(int inch) {
 		this.inch = inch;
 	}
 	public String getDisplayType() {
@@ -26,7 +26,7 @@ class TV extends Product {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString() + String.format(" | %-5.1f | %-8s",
+		return super.toString() + String.format(" | %-5dInch | %-8s",
 				this.getInch(), this.getDisplayType());
 	}
 }
