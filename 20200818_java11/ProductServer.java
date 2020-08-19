@@ -54,7 +54,7 @@ class JobThread extends Thread {
 public class ProductServer {
 
 	private void service() {
-		try (ServerSocket ss = new ServerSocket(9999);) {
+		try (ServerSocket ss = new ServerSocket(8080);) {
 			System.out.println("상품 서버 구동");
 			while (true) {
 				Socket client = ss.accept();
