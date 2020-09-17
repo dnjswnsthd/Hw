@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>싸피 게시판</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  .logout{float:right;}
+  .write a{color:white;}
+  .table{margin-top:20px;}
+  .textarea{height:200px;}
+  .prev{ margin-left:10px;}
+  .btnbox{width: 250px; margin:0 auto;}
+  .container button{margin-right:10px;}
+  .commentbox{width:100%; height:140px; margin:0; margin-top:20px;}
+  .commentbox textarea{width:900px;float:left;}
+  .writebtn{width:100px;height:135px; float:right;}
+  a{color:black;}
+  </style>
+</head>
+<body>
+<p class="logout">원준님 환영합니다. <a href="#">로그아웃</a></p>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>HELLO SSAFY</h1>
+</div>
+
+<div class="container" style="margin-top:30px">
+  <div class="container mt-3">
+    <h2>SSAFY 게시판</h2>
+    <div class="navbox">
+    <button type="button" class="btn btn-primary write"><a href="write.html">새글쓰기</a></button>
+    <button type="button" class="btn btn-info write"><a href="write.html">수정</a></button>
+    <button type="button" class="btn btn-danger write"><a href="index".html">삭제</a></button>
+    
+  </div>
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>제목</th>
+          <th colspan="5">1, Hello SSAFY</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr>
+          <th>작성자</th>
+          <td>송원준/td>
+          <th>조회수</th>
+          <td>5</td>
+          <th>작성일</th>
+          <td>2020-09-16</td>
+        </tr>
+        <tr>
+          <td colspan="6" class="textarea">HELLO SSAFY!!</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="pagination btnbox">
+      <button type="button" class="btn btn-info">최신목록</button>
+      <button type="button" class="btn btn-info prev">이전목록</button>
+  </ul>
+  
+  <div class="form-group commentbox">
+      <textarea class="form-control" rows="5" id="comment" placeholder="주제와 무관한 댓글,악플은 삭제될 수 있습니다."></textarea>
+      <button type="button" class="btn btn-primary writebtn"><a href="index.html"> 작성</a></button>
+    </div>
+</div>
+
+</body>
+</html>
