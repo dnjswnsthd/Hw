@@ -52,9 +52,9 @@ public class Solution_5656_벽돌깨기 {
 				res = 0;
 				return;
 			}
-			// 4. 맵 정리
+			// 맵 정리
 			newMap(copyMap);
-			// 5. 다음 샷 발사
+			// 다음 샷 발사
 			drop(r - 1, cnt - broken, copyMap);
 		}
 	}
