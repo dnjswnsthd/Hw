@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #list {
+        width: 800px;
+        margin-left: 80px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      #list td,
+      #list th {
+        border: 1px solid black;
+        text-align: center;
+      }
+      #list > thead > tr {
+        color: white;
+        background-color: skyblue;
+      }
+      #search {
+        margin-left: 350px;
+      }
+      #h2_1 {
+        margin-left: 450px;
+      }
+      #h2 {
+        margin-left: 400px;
+      }
+    </style>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <title>vuehw01</title>
+  </head>
+  <body>
+    <h2 id="h2_1">사원 목록</h2>
+    <div id="employee">
+      <p id="search">
+        <strong>사원명 :</strong>
+        <input
+          type="text"
+          v-model="emp_name"
+          placeholder="사원명"
+          @input="nameChanged"
+        />
+      </p>
+      <table id="list">
+        <thead>
+          <tr>
+            <th>사원 아이디</th>
+            <th>사원명</th>
+            <th>부서</th>
+            <th>직책</th>
+            <th>연봉</th>
+          </tr>
+        </thead>
+        <tbody id="contacts">
+          <div id="check">
+            <tr v-for="emp in filtered">
+              <td @click="check(emp)">{{emp.no}}</td>
+              <td @click="check(emp)">{{emp.name}}</td>
+              <td @click="check(emp)">{{emp.depart}}</td>
+              <td @click="check(emp)">{{emp.level}}</td>
+              <td @click="check(emp)">{{emp.sal}}</td>
+            </tr>
+          </div>
+        </tbody>
+      </table>
+
+      <h2 id="h2">클릭된 사원의 정보</h2>
+      <div id="res">
+        <table id="list">
+          <thead>
+            <tr>
+              <th>사원 아이디</th>
+              <th>사원명</th>
+              <th>부서</th>
+              <th>직책</th>
+              <th>연봉</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="e_id">0</td>
+              <td id="e_name">사원명</td>
+              <td id="e_depart">부서명</td>
+              <td id="e_level"></td>
+              <td id="e_sal">123,456,789</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var model = {
+        emp_name: '',
+        employees: [
+          {
+            no: 1,
+            name: '송원준',
+            depart: '개발부',
+            level: '사장',
+            sal: '600,000,000',
+          },
+          {
+            no: 2,
+            name: '조준형',
+            depart: '응원부',
+            level: '신입',
+            sal: '100,000,000',
+          },
+          {
+            no: 3,
+            name: '가나다',
+            depart: '개발부',
+            level: '과장',
+            sal: '400,000,000',
+          },
+          {
+            no: 4,
+            name: '나다라',
+            depart: '기획부',
+            level: '대리',
+            sal: '300,000,000',
+          },
+          {
+            no: 5,
+            name: '다라마',
+            depart: '인사부',
+            level: '사원',
+            sal: '200,000,000',
+          },
+          {
+            no: 6,
+            name: '라마바',
+            depart: '영업부',
+            level: '신입',
+            sal: '100,000,000',
+          },
+          {
+            no: 7,
+            name: '마바사',
+            depart: '기획부',
+            level: '부장',
+            sal: '500,000,000',
+          },
+          {
+            no: 8,
+            name: '바사아',
+            depart: '개발부',
+            level: '차장',
+            sal: '450,000,000',
+          },
+          {
+            no: 9,
+            name: '사아자',
+            depart: '개발부',
+            level: '사원',
+            sal: '200,000,000',
+          },
+          {
+            no: 10,
+            name: '아자차',
+            depart: '인사부',
+            level: '과장',
+            sal: '400,000,000',
+          },
+        ],
+      };
+
+      var clist = new Vue({
+        el: '#employee',
+        data: model,
+        computed: {
+          /* computed property(계산형 속성) */
+          filtered: function () {
+            /* 배열의 아이템중 조건을 만족하는 아이템을 모아서 새로운 배열을 만들어 리턴함 */
+            var ename = this.emp_name.trim();
+            return this.employees.filter(function (item, index) {
+              if (item.name.indexOf(ename) > -1) {
+                return true;
+              }
+            });
+          },
+        },
+        methods: {
+          nameChanged: function (e) {
+            this.empname = e.target.value;
+          },
+        },
+
+        methods: {
+          check: function (e) {
+            document.getElementById('e_id').innerHTML = e.no;
+            document.getElementById('e_name').innerHTML = e.name;
+            document.getElementById('e_depart').innerHTML = e.depart;
+            document.getElementById('e_level').innerHTML = e.level;
+            document.getElementById('e_sal').innerHTML = e.sal;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
